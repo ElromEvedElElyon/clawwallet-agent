@@ -9,7 +9,7 @@ export class WalletManager {
     try {
       const WDK = (await import("@tetherto/wdk")).default;
 
-      const seed = seedPhrase || WDK.getRandomSeedPhrase(24);
+      const seed = seedPhrase || WDK.getRandomSeedPhrase();
       this.wdk = new WDK(seed);
 
       // Register available wallet modules
