@@ -8,9 +8,20 @@
     "build": "tsc",
     "start": "node dist/index.js",
     "dev": "tsx watch src/index.ts",
-    "demo": "tsx src/demo.ts"
+    "demo": "tsx src/demo.ts",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
-  "keywords": ["tether", "wdk", "ai-agent", "wallet", "multi-chain", "autonomous", "defi", "self-custodial"],
+  "keywords": [
+    "tether",
+    "wdk",
+    "ai-agent",
+    "wallet",
+    "multi-chain",
+    "autonomous",
+    "defi",
+    "self-custodial"
+  ],
   "author": "Elrom <standardbitcoin.io@gmail.com>",
   "license": "MIT",
   "repository": {
@@ -19,17 +30,18 @@
   },
   "dependencies": {
     "@tetherto/wdk": "1.0.0-beta.6",
-    "@tetherto/wdk-wallet-evm": "latest",
-    "@tetherto/wdk-wallet-btc": "latest",
-    "@tetherto/wdk-wallet-solana": "latest",
-    "@tetherto/wdk-protocol-swap-velora-evm": "latest",
     "@tetherto/wdk-protocol-bridge-usdt0-evm": "latest",
-    "@tetherto/wdk-protocol-lending-aave-evm": "latest"
+    "@tetherto/wdk-protocol-lending-aave-evm": "latest",
+    "@tetherto/wdk-protocol-swap-velora-evm": "latest",
+    "@tetherto/wdk-wallet-btc": "latest",
+    "@tetherto/wdk-wallet-evm": "latest",
+    "@tetherto/wdk-wallet-solana": "latest"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
     "tsx": "^4.19.0",
-    "typescript": "^5.8.0"
+    "typescript": "^5.8.0",
+    "vitest": "^4.1.0"
   },
   "engines": {
     "node": ">=22.0.0"
