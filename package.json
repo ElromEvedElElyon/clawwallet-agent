@@ -1,0 +1,33 @@
+{
+  "name": "clawwallet-agent",
+  "version": "1.0.0",
+  "description": "AI-powered multi-chain financial agent using Tether WDK. Autonomous wallet management across 6+ chains.",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx watch src/index.ts",
+    "demo": "tsx src/demo.ts"
+  },
+  "keywords": ["tether", "wdk", "ai-agent", "wallet", "multi-chain", "autonomous", "defi", "self-custodial"],
+  "author": "Elrom <standardbitcoin.io@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ElromEvedElElyon/clawwallet-agent.git"
+  },
+  "dependencies": {
+    "@tetherto/wdk": "latest",
+    "@tetherto/wdk-wallet-evm": "latest",
+    "@tetherto/wdk-wallet-btc": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.8.0"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}
