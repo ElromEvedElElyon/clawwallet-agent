@@ -16,6 +16,14 @@ export class WalletManager {
       const modulesToRegister: [string, () => Promise<any>, Record<string, string>][] = [
         ["ethereum", () => import("@tetherto/wdk-wallet-evm"), { provider: process.env.ETH_RPC || "https://eth.drpc.org" }],
         ["bitcoin", () => import("@tetherto/wdk-wallet-btc"), { provider: process.env.BTC_PROVIDER || "https://blockstream.info/api" }],
+        ["solana", () => import("@tetherto/wdk-wallet-solana"), { provider: process.env.SOL_RPC || "https://api.mainnet-beta.solana.com" }],
+      ];
+
+      // Register protocol modules (swap, bridge)
+      const protocolsToRegister: [string, string, () => Promise<any>, Record<string, unknown>][] = [
+        ["ethereum", "velora", () => import("@tetherto/wdk-protocol-swap-velora-evm"), {}],
+        ["ethereum", "usdt0-bridge", () => import("@tetherto/wdk-protocol-bridge-usdt0-evm"), {}],
+        ["ethereum", "aave", () => import("@tetherto/wdk-protocol-lending-aave-evm"), {}],
       ];
 
       const registered: string[] = [];
@@ -28,6 +36,20 @@ export class WalletManager {
           registered.push(name);
         } catch {
           console.log(`[WalletManager] ${name} module not available, skipping`);
+        }
+      }
+
+      // Register protocols
+      for (const [chain, label, importFn, config] of protocolsToRegister) {
+        try {
+          if (registered.includes(chain)) {
+            const mod = await importFn();
+            const ProtocolModule = mod.default || mod;
+            this.wdk = this.wdk.registerProtocol(chain, label, ProtocolModule, config);
+            console.log(`[WalletManager] Protocol ${label} registered on ${chain}`);
+          }
+        } catch {
+          console.log(`[WalletManager] Protocol ${label} not available, skipping`);
         }
       }
 

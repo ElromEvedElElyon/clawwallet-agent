@@ -18,9 +18,13 @@
     "url": "https://github.com/ElromEvedElElyon/clawwallet-agent.git"
   },
   "dependencies": {
-    "@tetherto/wdk": "latest",
+    "@tetherto/wdk": "1.0.0-beta.6",
     "@tetherto/wdk-wallet-evm": "latest",
-    "@tetherto/wdk-wallet-btc": "latest"
+    "@tetherto/wdk-wallet-btc": "latest",
+    "@tetherto/wdk-wallet-solana": "latest",
+    "@tetherto/wdk-protocol-swap-velora-evm": "latest",
+    "@tetherto/wdk-protocol-bridge-usdt0-evm": "latest",
+    "@tetherto/wdk-protocol-lending-aave-evm": "latest"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
